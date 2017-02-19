@@ -1,4 +1,5 @@
 # adittion class string
+# for new branch
 class String
   def valid?
     stack = []
