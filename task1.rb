@@ -1,6 +1,5 @@
 # adittion class string
 class String
-
   def valid?
     stack = []
     skobki = { '{' => '}', '[' => ']', '(' => ')', '<' => '>' }
