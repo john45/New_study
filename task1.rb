@@ -1,4 +1,4 @@
-# adittion class string
+#adittion class string
 # for new branch
 # master branch
 class String
