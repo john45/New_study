@@ -6,7 +6,6 @@ class FindSimple
 
   def check
     result = []
-    return 'Число меньше или равно 1, введите болье 1' if @number <= 1
     (2..@number).each do |element|
       devided = 0
       if element == 2
@@ -21,15 +20,15 @@ class FindSimple
 
   private
 
-    def print_result(result)
-      new_array = result
-      puts "Start printing array: #{result}"
-      result.length.times do |time|
-        new_array.each { |el| print el.to_s.ljust(5) }
-        to_last_element  = new_array.shift
-        new_array << to_last_element
-        print "\n"
-      end
-      nil
+  def print_result(result)
+    new_array = result
+    puts "Start printing array: #{result}"
+    result.length.times do
+      new_array.each { |el| print el.to_s.ljust(5) }
+      to_last_element = new_array.shift
+      new_array << to_last_element
+      print "\n"
     end
+    nil
+  end
 end
