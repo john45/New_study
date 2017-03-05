@@ -11,10 +11,11 @@ require 'csv'
 date_temp = {}
 ds_in_mths = {}
 CSV.foreach('temperature.csv') do |f|
-  month, temp = f[0].split('.')[1], f[1].to_i
+  month = f[0].split('.')[1]
+  temp = f[1].to_i
   ds_in_mths.key?(month) ? ds_in_mths[month] += 1 : ds_in_mths[month] = 1
-  date_temp.has_key?(month) ? date_temp[month] += temp : date_temp[month] = temp
+  date_temp.key?(month) ? date_temp[month] += temp : date_temp[month] = temp
 end
 
-ds_in_mths.each { |k, v| date_temp[k] = (date_temp[k]*1.0/v).round(2) }
+ds_in_mths.each { |k, v| date_temp[k] = (date_temp[k] * 1.0 / v).round(2) }
 p date_temp

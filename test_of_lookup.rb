@@ -1,38 +1,28 @@
 class Superclass
-
   def action
-    puts "Superclass"
-  end 
-
+    puts 'Superclass'
+  end
 end
-
 
 module IncludedModule
-
   def action
-    puts "Included module"
+    puts 'Included module'
     super
   end
-  
 end
 
-
 module PrependedModule
-
   def action
-    puts "Prepended module"
+    puts 'Prepended module'
     super
   end
-  
 end
 
 module SingletonModule
-
   def action
-    puts "Singleton class"
+    puts 'Singleton class'
     super
   end
-
 end
 
 class Klass < Superclass
@@ -40,7 +30,7 @@ class Klass < Superclass
   prepend PrependedModule
 
   def action
-    puts "Klass"
+    puts 'Klass'
     super
   end
 end
