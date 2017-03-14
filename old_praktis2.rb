@@ -1,20 +1,35 @@
+module Service
+  class Deliver
+    def sms
+    end
+
+    def email
+    end
+  end
+end
+
 module Notification
   def self.included(base)
     base.extend(ClassMethods)
   end
 
-  def log(path)
-    File.open("#{path}.txt", 'w+') do |f|
-      f.puts yield if block_given?
+  module ClassMethods
+    def log
+      puts '*-----------------------*'
+      File.readlines("#{self.name}.log").each { |line| puts line }
+      puts '*-----------------------*'
     end
   end
 
-
   def add_to_log(recepient)
+    File.open("#{recepient}.log", 'a') do |f|
+      f.puts "The #{self.class.name} not send #{recepient} have wrong format"
+    end
+    puts "The #{self.class.name} not send #{recepient} have wrong format"
   end
 
-  def send_message(type, recepient)
-    puts self.log(type){ "#{type} successful send to #{recepient}" }
+  def send_message(recepient)
+    puts "Sending #{recepient} to #{self.class.name}"
   end
 end
 
@@ -26,30 +41,39 @@ class Email
     begin
       raise 'wrong email format' unless /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i =~ obj
     rescue
-      Email.log(self.class.name.to_s) {'wrong email format'}
+      add_to_log(obj)
     else
-      super(self.class.name.to_s, obj)
+      super
     end
   end
-end
 
+  def Email.log
+    super
+  end
+end
 
 class Sms
   include Notification
 
   def send_message(obj)
     begin
-      raise 'wrong phone number' unless /\A\+380\d{9}/ =~ obj
+      raise 'wrong phone number' unless /\A\+380\d{9}\z/ =~ obj.to_s
     rescue
-      self.log(self.class.name) {'wrong phone number'}
+      add_to_log(obj)
     else
-      super(self.class.name, obj)
+      super
     end
+  end
+
+  def Sms.log
+    super
   end
 end
 
 
 
-send = Email.new.send_message('john45@mail.ru')
+send1 = Email.new.send_message('john45@mail.ru')
+Email.log
 
-send = Sms.new.send_message('+380633220087')
+send2 = Sms.new.send_message('+380633220087')
+Sms.log
