@@ -2,16 +2,14 @@ require 'gmail'
 
 module Service
   class Deliver
-    def self.sms(number)
-
-    end
+    def self.sms(_number); end
 
     def self.email(email)
-      gmail = Gmail.connect('mangamen45', 'password')
+      gmail = Gmail.connect('mangamen45', '')
       email_to = gmail.compose do
         to email
-        subject "Having fun in Puerto Rico!"
-        body "Spent the day on the road..."
+        subject 'Velara vihodi!'
+        body 'body text'
       end
       email_to.deliver!
     end
@@ -26,7 +24,7 @@ module Notification
   module ClassMethods
     def log
       puts '*-----------------------*'
-      File.readlines("#{self.name}.log").each { |line| puts line }
+      File.readlines("#{name}.log").each { |line| puts line }
       puts '*-----------------------*'
     end
   end
@@ -44,21 +42,18 @@ module Notification
   end
 end
 
-
 class Email
   include Notification
 
   def send_message(obj)
-    begin
-      raise 'wrong email format' unless /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i =~ obj
-    rescue
-      add_to_log(obj)
-    else
-      super
-    end
+    raise 'wrong email format' unless /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i =~ obj
+  rescue
+    add_to_log(obj)
+  else
+    super
   end
 
-  def Email.log
+  def self.log
     super
   end
 end
@@ -67,23 +62,19 @@ class Sms
   include Notification
 
   def send_message(obj)
-    begin
-      raise 'wrong phone number' unless /\A\+380\d{9}\z/ =~ obj.to_s
-    rescue
-      add_to_log(obj)
-    else
-      super
-    end
+    raise 'wrong phone number' unless /\A\+380\d{9}\z/ =~ obj.to_s
+  rescue
+    add_to_log(obj)
+  else
+    super
   end
 
-  def Sms.log
+  def self.log
     super
   end
 end
 
-
-
-send1 = Email.new.send_message('john45@mail.ru')
+send1 = Email.new.send_message('vel202007@gmail.com')
 Email.log
 
 send2 = Sms.new.send_message('+380633220087')

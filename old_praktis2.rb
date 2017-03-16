@@ -1,10 +1,8 @@
 module Service
   class Deliver
-    def sms
-    end
+    def sms; end
 
-    def email
-    end
+    def email; end
   end
 end
 
@@ -16,7 +14,7 @@ module Notification
   module ClassMethods
     def log
       puts '*-----------------------*'
-      File.readlines("#{self.name}.log").each { |line| puts line }
+      File.readlines("#{name}.log").each { |line| puts line }
       puts '*-----------------------*'
     end
   end
@@ -33,21 +31,18 @@ module Notification
   end
 end
 
-
 class Email
   include Notification
 
   def send_message(obj)
-    begin
-      raise 'wrong email format' unless /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i =~ obj
-    rescue
-      add_to_log(obj)
-    else
-      super
-    end
+    raise 'wrong email format' unless /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i =~ obj
+  rescue
+    add_to_log(obj)
+  else
+    super
   end
 
-  def Email.log
+  def self.log
     super
   end
 end
@@ -56,21 +51,17 @@ class Sms
   include Notification
 
   def send_message(obj)
-    begin
-      raise 'wrong phone number' unless /\A\+380\d{9}\z/ =~ obj.to_s
-    rescue
-      add_to_log(obj)
-    else
-      super
-    end
+    raise 'wrong phone number' unless /\A\+380\d{9}\z/ =~ obj.to_s
+  rescue
+    add_to_log(obj)
+  else
+    super
   end
 
-  def Sms.log
+  def self.log
     super
   end
 end
-
-
 
 send1 = Email.new.send_message('john45@mail.ru')
 Email.log
