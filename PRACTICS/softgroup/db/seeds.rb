@@ -6,3 +6,20 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+seed_for_user = { first_name: "john#{rand(99)}",
+                  last_name: "adam#{rand(99)}",
+                  username: "manga#{rand(99)}",
+                  password: "123456789",
+                  email: "john#{rand(99)}@mail.ru}",
+                  birthday: Time.now }
+#  first_name :string(255)
+#  last_name  :string(255)
+#  username   :string(255)
+#  password   :string(255)
+#  email      :string(255)
+#  birthday   :datetime
+
+50.times do
+  u = User.new seed_for_user
+  u.save
+end

@@ -17,10 +17,10 @@
 
 class User < ActiveRecord::Base
   attr_accessible :birthday, :email, :first_name, :last_name, :password, :username
-  validates :username, uniqueness: true
-  validates :email, uniqueness: true
-  validates :password, length: { minimum: 8 }
-  validates :username, :email, :password, presence: true
+  # validates :username, uniqueness: true
+  # validates :email, uniqueness: true
+  # validates :password, length: { minimum: 8 }
+  # validates :username, :email, :password, presence: true
 
   has_many :images, as: :share_image
 

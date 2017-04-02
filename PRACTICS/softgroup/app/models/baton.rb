@@ -13,4 +13,6 @@
 class Baton < ActiveRecord::Base
   attr_accessible :name
   has_many :photos, as: :pic_for_all
+
+
 end
