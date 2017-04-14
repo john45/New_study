@@ -1,0 +1,14 @@
+<% if current_user %>
+
+<p class="all-users">
+  <ul>
+    <% @users.each do |user| %>
+      <li><%= user.email %></li>
+    <% end %>
+  </ul>
+</p>
+<% else %>
+
+  <%= link_to 'Sign UP!', sign_up_path, class: 'btn btn-primary btn-lg' %>
+
+<% end %>

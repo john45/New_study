@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -9,7 +10,7 @@
 seed_for_user = { first_name: "john#{rand(99)}",
                   last_name: "adam#{rand(99)}",
                   username: "manga#{rand(99)}",
-                  password: "123456789",
+                  password: '123456789',
                   email: "john#{rand(99)}@mail.ru}",
                   birthday: Time.now }
 #  first_name :string(255)

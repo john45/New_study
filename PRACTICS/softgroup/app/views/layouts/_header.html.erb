@@ -1,0 +1,36 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar">1</span>
+        <span class="icon-bar">2</span>
+        <span class="icon-bar">3</span>
+      </button>
+      <%= link_to 'SoftGroup', root_path, class: "navbar-brand" %>
+      <!-- <a class="navbar-brand" href="#">SoftGroup</a> -->
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <% if current_user %>
+        <div class="navbar-form navbar-right">
+          <%= link_to 'Sign Out', log_out_path, class: 'btn btn-warning ' %>
+        </div>
+
+      <% else %>
+
+        <%= form_tag sessions_path, class: 'navbar-form navbar-right' do %>
+          <div class="form-group">
+            <%= text_field_tag :email, nil, class: 'form-control', placeholder: 'Email' %>
+          </div>
+          <div class="form-group">
+            <%= password_field_tag :password, nil, class: 'form-control', placeholder: 'Password' %>
+          </div>
+          <%= submit_tag 'Sign in', class: 'btn btn-success' %>
+        <% end %>
+
+       <% end %>
+
+
+    </div><!--/.navbar-collapse -->
+  </div>
+</nav>
