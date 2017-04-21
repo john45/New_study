@@ -2,5 +2,5 @@
 
 require 'test_helper'
 
-class SessionsHelperTest < ActionView::TestCase
+class PostsHelperTest < ActionView::TestCase
 end

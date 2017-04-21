@@ -1,0 +1,11 @@
+<ul class='post-<%= post.id %>'>
+  <li><%= post.title %></li>
+  <li><%= post.body %></li>
+  <li><%= post.user.email %></li>
+  <li>
+    <%= link_to 'delete', post , method: 'DELETE', remote: true if post.user.id === current_user.id %>
+    <%= post.created_at  %>
+  </li>
+
+  <hr>
+</ul>

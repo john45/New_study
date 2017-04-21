@@ -11,3 +11,14 @@
  *= require_self
  *= require_tree .
  */
+.new_book {
+  display: none;
+}
+
+.sign_up {
+  text-align: center;
+}
+
+li {
+  list-style-type: none;
+}

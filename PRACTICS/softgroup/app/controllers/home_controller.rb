@@ -5,9 +5,7 @@ class HomeController < ApplicationController
   # before_filter :bookm except: [:index, :new, :create]
   before_filter :get_users
 
-  def index
-  end
-
+  def index; end
 
   private
 

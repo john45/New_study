@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Changepasswordcolumntousermodel < ActiveRecord::Migration
   def change
     # rename_column :users, :password, :password_hash

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -19,7 +20,7 @@ class User < ActiveRecord::Base
   before_save :encrypt_password
 
   attr_accessor :password
-  attr_accessible :email,:password, :password_confirmation
+  attr_accessible :email, :password, :password_confirmation
 
   validates :email, uniqueness: true
   validates :password, confirmation: true
@@ -27,12 +28,11 @@ class User < ActiveRecord::Base
   validates :password, :email, presence: true
 
   has_many :images, as: :share_image
+  has_many :posts, dependent: :destroy
 
   scope :old, -> { where('birthday <= ?', 18.years.ago) }
 
-
   private
-
 
   def encrypt_password
     if password.present?
@@ -44,11 +44,8 @@ class User < ActiveRecord::Base
   def self.authenticate(email, password)
     user = find_by_email(email)
 
-
     if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
       user
-    else
-      nil
     end
   end
 

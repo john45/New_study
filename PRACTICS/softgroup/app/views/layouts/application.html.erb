@@ -12,11 +12,11 @@
 
     <%= render 'layouts/header' %>
 
+    <div class="container">
+      <div class="jumbotron">
+        <h1></h1>
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-        <h1>Hello, world!</h1>
+        <%= render partial: 'layouts/flash', locals: { flash: flash } %>
 
         <%= yield %>
 
@@ -31,7 +31,7 @@
         <p>&copy; 2017 Homemade.</p>
       </footer>
 
-    </div> <!-- /container -->
+    </div>
 
 
   </body>

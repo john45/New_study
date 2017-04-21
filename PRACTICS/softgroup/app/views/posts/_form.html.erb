@@ -1,0 +1,11 @@
+<%= form_for @post, remote: true do |f| %>
+  <ul>
+    <li><%= f.label :title, "Title" %></li>
+    <li><%= f.text_field :title, class: 'form-control form_post_title' %></li>
+    <li><%= f.label :body, "Body" %></li>
+    <li><%= f.text_area :body, rows: 5, class: 'form-control form_post_body' %></li>
+    <li><%= f.hidden_field :user_id %></li>
+    <p><li><%= f.submit class:'btn btn-success' %></li></p>
+
+  </ul>
+<% end %>
