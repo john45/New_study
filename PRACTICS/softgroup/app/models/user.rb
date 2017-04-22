@@ -20,18 +20,22 @@ class User < ActiveRecord::Base
   before_save :encrypt_password
 
   attr_accessor :password
-  attr_accessible :email, :password, :password_confirmation
+  attr_accessible :email, :first_name, :last_name, :password, :password_confirmation
 
   validates :email, uniqueness: true
   validates :password, confirmation: true
-  validates :password, length: { minimum: 8 }
-  validates :password, :email, presence: true
+  # validates :password, length: { minimum: 8 }
+  validates :email, presence: true
 
   has_many :images, as: :share_image
   has_many :posts, dependent: :destroy
 
   scope :old, -> { where('birthday <= ?', 18.years.ago) }
 
+  def full_name
+    return nil if !first_name or !last_name
+    "#{first_name.capitalize} #{last_name.capitalize}"
+  end
   private
 
   def encrypt_password
@@ -49,7 +53,4 @@ class User < ActiveRecord::Base
     end
   end
 
-  def full_name
-    "#{first_name.capitalize} #{last_name.capitalize}"
-  end
 end

@@ -5,7 +5,7 @@ class FeedsController < ApplicationController
 
   def index
     @user = current_user
-    @posts = @user.posts
+    @posts = Post.includes(:user)
     @post = @user.posts.build
   end
 end
