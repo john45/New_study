@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  before_filter :get_post, only: [:edit, :update, :destroy]
+
+  def edit
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def create
     @post = Post.new(params[:post])
     @post.save
@@ -10,12 +18,28 @@ class PostsController < ApplicationController
     end
   end
 
+  def update
+    @post.update_attributes params[:post]
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy
     respond_to do |format|
       format.html
       format.js
     end
+  end
+
+
+
+
+  private
+
+
+  def get_post
+    @post = Post.find(params[:id])
   end
 end

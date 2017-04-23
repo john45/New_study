@@ -1,9 +1,9 @@
 <ul class='post-<%= post.id %>'>
   <li><%= link_to (post.user.full_name || post.user.email) %></li>
-  <li><%= post.title %></li>
-  <li><%= post.body %></li>
+  <li><%= post.title.html_safe %></li>
+  <li><%= post.body.html_safe %></li>
   <li>
-    <%= link_to 'edit', edit_post_path(post.id) if author?(post) %>
+    <%= link_to 'edit', edit_post_path(post.id), remote: true if author?(post) %>
     <%= link_to 'delete', post , method: 'DELETE', remote: true if author?(post) %>
     <%= post.created_at.strftime("%B %d, %Y") if post.created_at  %>
   </li>
