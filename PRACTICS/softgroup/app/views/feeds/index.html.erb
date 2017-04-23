@@ -1,6 +1,13 @@
 <div class="container">
   <div class="col-md-4">
-    <p><%= @user.email %></p>
+    <p><%= @user.email %></p><br>
+
+    <p>User have
+      <span id='user_<%= @user.id %>_count_post'>
+        <%= pluralize(@user.posts_count, 'post') %>
+      </span>
+    </p>
+
     <%= render 'posts/form' %>
   </div>
 
@@ -8,6 +15,10 @@
   </div>
 
   <div class="col-md-6 blok_with_posts">
-    <%= render @posts %>
+    <% if @posts.blank? %>
+      <p>You have no posts yet, do one</p>
+    <% else %>
+      <%= render @posts %>
+    <% end %>
   </div>
 </div>

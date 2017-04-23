@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   before_save :encrypt_password
 
   attr_accessor :password
-  attr_accessible :email, :first_name, :last_name, :password, :password_confirmation
+  attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :posts_count
 
   validates :email, uniqueness: true
   validates :password, confirmation: true
