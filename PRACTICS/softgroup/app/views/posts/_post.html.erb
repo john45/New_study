@@ -4,8 +4,8 @@
   <li><%= post.body.html_safe %></li>
   <li>
     <%= link_to 'edit', edit_post_path(post.id), remote: true if author?(post) %>
-    <%= link_to 'delete', post , method: 'DELETE', remote: true if author?(post) %>
-    <%= post.created_at.strftime("%B %d, %Y") if post.created_at  %>
+    <%= link_to 'delete', post , method: 'DELETE', remote: true, data: {confirm: "Are you sure?"} if author?(post) %>
+    <%= post.created_at.strftime("%B %d, %Y") %>
   </li>
 
   <hr>

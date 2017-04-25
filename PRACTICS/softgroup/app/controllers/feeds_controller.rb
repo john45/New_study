@@ -8,4 +8,8 @@ class FeedsController < ApplicationController
     @posts = Post.includes(:user)
     @post = @user.posts.build
   end
+
+  def test_ck
+
+  end
 end
