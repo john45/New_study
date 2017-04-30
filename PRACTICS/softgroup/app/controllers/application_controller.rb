@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   private
 
+  # TODO
 
   def author?(obj)
     obj.user.id === current_user.id

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # == Schema Information
 #
 # Table name: posts
@@ -17,4 +18,6 @@ class Post < ActiveRecord::Base
   attr_accessible :body, :published_at, :title, :user_id
   belongs_to :user, counter_cache: true
   default_scope { order('created_at desc') }
+
+  paginates_per 7
 end

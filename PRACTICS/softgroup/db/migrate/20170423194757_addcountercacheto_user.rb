@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddcountercachetoUser < ActiveRecord::Migration
   def up
     add_column :users, :posts_count, :integer

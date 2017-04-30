@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -32,9 +33,10 @@ class User < ActiveRecord::Base
   scope :old, -> { where('birthday <= ?', 18.years.ago) }
 
   def full_name
-    return nil if !first_name or !last_name
+    return nil if !first_name || !last_name
     "#{first_name.capitalize} #{last_name.capitalize}"
   end
+
   private
 
   def encrypt_password
@@ -51,5 +53,4 @@ class User < ActiveRecord::Base
       user
     end
   end
-
 end

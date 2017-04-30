@@ -1,4 +1,6 @@
 # encoding: UTF-8
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,49 +13,47 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170424215850) do
-
-  create_table "books", :force => true do |t|
-    t.string   "author"
-    t.string   "title"
-    t.integer  "page_counter"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.date     "year"
-    t.text     "body"
+ActiveRecord::Schema.define(version: 20_170_424_215_850) do
+  create_table 'books', force: true do |t|
+    t.string   'author'
+    t.string   'title'
+    t.integer  'page_counter'
+    t.datetime 'created_at',   null: false
+    t.datetime 'updated_at',   null: false
+    t.date     'year'
+    t.text     'body'
   end
 
-  add_index "books", ["title"], :name => "index_books_on_title"
+  add_index 'books', ['title'], name: 'index_books_on_title'
 
-  create_table "pictures", :force => true do |t|
-    t.string   "name_of_pic"
-    t.integer  "pic_for_all_id"
-    t.string   "pic_for_all_type"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+  create_table 'pictures', force: true do |t|
+    t.string   'name_of_pic'
+    t.integer  'pic_for_all_id'
+    t.string   'pic_for_all_type'
+    t.datetime 'created_at',       null: false
+    t.datetime 'updated_at',       null: false
   end
 
-  create_table "posts", :force => true do |t|
-    t.string   "title"
-    t.text     "body"
-    t.datetime "published_at"
-    t.integer  "user_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+  create_table 'posts', force: true do |t|
+    t.string   'title'
+    t.text     'body'
+    t.datetime 'published_at'
+    t.integer  'user_id'
+    t.datetime 'created_at',   null: false
+    t.datetime 'updated_at',   null: false
   end
 
-  create_table "users", :force => true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "username"
-    t.string   "password"
-    t.string   "email"
-    t.datetime "birthday"
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
-    t.string   "password_salt"
-    t.integer  "posts_count",   :default => 0
-    t.string   "password_hash"
+  create_table 'users', force: true do |t|
+    t.string   'first_name'
+    t.string   'last_name'
+    t.string   'username'
+    t.string   'password'
+    t.string   'email'
+    t.datetime 'birthday'
+    t.datetime 'created_at',                   null: false
+    t.datetime 'updated_at',                   null: false
+    t.string   'password_salt'
+    t.integer  'posts_count', default: 0
+    t.string   'password_hash'
   end
-
 end

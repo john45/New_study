@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Addpasswordhashtousers < ActiveRecord::Migration
   def up
     add_column :users, :password_hash, :string

@@ -5,11 +5,14 @@ class FeedsController < ApplicationController
 
   def index
     @user = current_user
-    @posts = Post.includes(:user)
+    @posts = Post.includes(:user).page params[:page]
     @post = @user.posts.build
   end
 
-  def test_ck
-
+  def next_page
+    @posts = Post.includes(:user).page params[:page]
+    respond_to do |format|
+      format.js
+    end
   end
 end

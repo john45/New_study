@@ -21,4 +21,5 @@ class SessionsController < ApplicationController
     flash[:info] = 'You log out succesfull!'
     redirect_to root_url
   end
+  # FIXME: delete space
 end

@@ -2,7 +2,7 @@
 
 Softgroup::Application.routes.draw do
   get 'feeds' => 'feeds#index', as: 'feeds'
-  get 'test_ck' => 'feeds#test_ck'
+  get 'next_page' => 'feeds#next_page'
 
   root to: 'home#index'
 
