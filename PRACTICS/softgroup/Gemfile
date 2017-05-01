@@ -10,6 +10,7 @@ gem 'mysql2', '0.3.20'
 gem 'rails', '3.2.22.5'
 gem 'test-unit', '~> 3.0'
 gem 'kaminari'
+gem 'social-share-button'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

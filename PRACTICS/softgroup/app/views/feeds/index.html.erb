@@ -1,24 +1,17 @@
 <div class="container">
-  <div class="col-md-4">
-    <p><%= @user.email %></p><br>
-
-      <%= how_many_posts %>
-
+  <div class="col-md-4 user_info_form_block text-center">
+    <%= render 'user_info' %>
     <%= render 'posts/form' %>
   </div>
 
   <div class="col-md-2">
+  <!-- free space on center -->
   </div>
 
   <div class="col-md-6">
     <div class="blok_with_posts">
       <%= search_posts %>
     </div>
-
-    <%= paginate @posts, window: 3 %>
-
-
+    <%#= paginate @posts, window: 3 %>
   </div>
-
-
 </div>

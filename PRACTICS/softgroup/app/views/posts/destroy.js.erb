@@ -1,2 +1,2 @@
-$('ul.post-<%= @post.id %>').remove();
+$('.post-<%= @post.id %>').remove();
 $('span#user_<%= current_user.id %>_count_post').html('<%= pluralize(current_user.posts_count, "post") %>');

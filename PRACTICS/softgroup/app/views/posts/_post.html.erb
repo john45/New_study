@@ -1,12 +1,45 @@
-<ul class='post-<%= post.id %>'>
-  <li><%= link_to (post.user.full_name || post.user.email) %></li>
-  <li><%= post.title.html_safe %></li>
-  <li><%= post.body.html_safe %></li>
+<div class="post_block post-<%= post.id %>">
+
+  <div class="post_header row">
+    <div class="avatar col-md-2 text-left">
+      <%= image_tag 'ruby_avatar_default_50x50_1.jpg', size: '50x50', alt: 'def avatar' %>
+    </div>
+    <div class="col-md-10">
+      <%= link_to (post.user.full_name || post.user.email) %><br>
+      <%= post.created_at.strftime("%B %d, %Y") %>
+    </div>
+  </div>
+
+  <div class="title_post">
+    <h3><%= post.title %></h3>
+  </div>
+
+  <div class="post_body">
+    <%= post.body.html_safe %>
+  </div>
+
+  <div class="row post_footer">
+    <div class="col-md-6 post_tools text-left">
+      <%= link_to 'edit', edit_post_path(post.id), remote: true if author?(post) %>
+      <%= link_to 'delete', post , method: 'DELETE', remote: true, data: {confirm: "Are you sure?"} if author?(post) %>
+    </div>
+    <div class="col-md-6 social_share_button text-right">
+      <%= social_share_button_tag(post.body) %>
+    </div>
+  </div>
+
+</div>
+<!--
+<ul class='post-<%#= post.id %>'>
+  <li><%#= link_to (post.user.full_name || post.user.email) %></li>
+  <li><%#= post.title.html_safe %></li>
+  <li><%#= post.body.html_safe %></li>
   <li>
-    <%= link_to 'edit', edit_post_path(post.id), remote: true if author?(post) %>
-    <%= link_to 'delete', post , method: 'DELETE', remote: true, data: {confirm: "Are you sure?"} if author?(post) %>
-    <%= post.created_at.strftime("%B %d, %Y") %>
+    <%#= link_to 'edit', edit_post_path(post.id), remote: true if author?(post) %>
+    <%#= link_to 'delete', post , method: 'DELETE', remote: true, data: {confirm: "Are you sure?"} if author?(post) %><%#= social_share_button_tag(post.body) %>
+    <%#= post.created_at.strftime("%B %d, %Y") %>
   </li>
 
   <hr>
 </ul>
+ -->
