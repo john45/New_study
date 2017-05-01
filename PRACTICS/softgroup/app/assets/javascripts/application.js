@@ -13,4 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require ckeditor/init
+//= require infinit_scroll
 //= require_tree .
