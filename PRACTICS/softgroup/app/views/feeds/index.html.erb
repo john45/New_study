@@ -1,14 +1,11 @@
 <div class="container">
   <div class="col-md-4 user_info_form_block text-center">
     <%= render 'user_info' %>
-    <%= render 'posts/form' %>
+    <%= link_to 'Do Post', '', class: 'btn btn-primary btn-block', id: 'show_hide_form_button' %>
+    <%= render 'posts/form', hidden: true %>
   </div>
 
-  <div class="col-md-2">
-  <!-- free space on center -->
-  </div>
-
-  <div class="col-md-6">
+  <div class="col-md-8">
     <div class="blok_with_posts">
       <%= search_posts %>
     </div>

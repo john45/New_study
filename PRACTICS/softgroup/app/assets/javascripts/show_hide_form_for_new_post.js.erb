@@ -1,0 +1,15 @@
+$(document).ready(function(){
+  $('a#show_hide_form_button').click(function(e){
+    e.preventDefault();
+    $('#new_post').toggle();
+
+    if ($(this).html() == 'Do Post'){
+      $(this).html('Hide Form');
+    } else {
+      $(this).html('Do Post');
+    }
+
+  });
+
+
+});

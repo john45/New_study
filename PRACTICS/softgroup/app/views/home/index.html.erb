@@ -1,19 +1,21 @@
+<div class="home">
   <% if current_user %>
-
-    <p class="all-users">
+  <p class="title_on_home">You are register !!!</p>
+<!--     <p class="all-users">
       <ul>
-        <% @users.each do |user| %>
-          <li><%= user.email %></li>
-        <% end %>
+        <#% @users.each do |user| %>
+          <li><%#= user.email %></li>
+        <#% end %>
       </ul>
-    </p>
+    </p> -->
 
   <% else %>
     <div class="sign_up">
-      <p>Sign UP please</p>
+      <!-- <p>Sign UP please</p> -->
 
-      <%= link_to 'Sign UP!', sign_up_path, class: 'btn btn-primary btn-lg' %>
+      <%= link_to 'Sign UP!', sign_up_path, class: 'btn sign_up_button btn-primary btn-lg' %>
     </div>
 
   <% end %>
+</div>
 
