@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: users
@@ -15,13 +14,21 @@
 #  updated_at    :datetime         not null
 #  password_salt :string(255)
 #  posts_count   :integer          default(0)
+#  password_hash :string(255)
+#  active        :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base
   before_save :encrypt_password
 
-  attr_accessor :password, :password_confirmation
-  attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :posts_count
+  attr_accessor :password, :password_confirmation, :active
+  attr_accessible :email,
+                  :first_name,
+                  :last_name,
+                  :password,
+                  :password_confirmation,
+                  :posts_count,
+                  :active
 
   validates :email, uniqueness: true
   validates :password, confirmation: true
@@ -31,6 +38,7 @@ class User < ActiveRecord::Base
   has_many :posts, dependent: :destroy
 
   scope :old, -> { where('birthday <= ?', 18.years.ago) }
+  scope :active, -> { where(active: true) }
 
   def full_name
     return nil if !first_name || !last_name

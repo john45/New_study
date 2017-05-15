@@ -1,6 +1,7 @@
 <div class="row form">
-  <%= form_for @post, html: { style: "display: #{hidden ? 'none' : 'block'}"}, remote: true do |f| %>
+  <%= form_for @post, html: { style: "display: #{hidden ? 'none' : 'block'}"}, multipart: true, remote: true do |f| %>
     <ul>
+      <li><%= f.file_field :picture %></li>
       <li><%= f.label :title, "Title" %></li>
       <li><%= f.text_field :title, class: 'form-control form_post_title' %></li>
       <li><%= f.label :body, "Body" %></li>

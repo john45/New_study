@@ -9,6 +9,9 @@
       <%= post.created_at.strftime("%B %d, %Y") %>
     </div>
   </div>
+  <div class="image">
+    <%= image_tag post.picture.url(:medium) %>
+  </div>
 
   <div class="title_post">
     <h3><%= post.title %></h3>
