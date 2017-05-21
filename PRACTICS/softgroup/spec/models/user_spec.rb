@@ -14,7 +14,6 @@
 #  password_salt :string(255)
 #  posts_count   :integer          default(0)
 #  password_hash :string(255)
-#  active        :boolean          default(FALSE)
 #
 
 require 'rails_helper'

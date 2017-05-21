@@ -7,6 +7,7 @@ class FeedsController < ApplicationController
     @user = current_user
     @posts = Post.includes(:user).page params[:page]
     @post = @user.posts.build
+    @post.build_picture
   end
 
   def next_page

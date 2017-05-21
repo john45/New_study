@@ -6,6 +6,7 @@ $(document).ready(function() {
   win.scroll(function(){
     if ((win.scrollTop()) >= doc.height() - win.height() ){
       // alert('some');
+      console.log('win.scrollTop - '+win.scrollTop+'; doc.height - '+doc.height+'; win.height - '+win.height );
       $.ajax({
           url: "next_page?page="+page+'.js',
           type: 'GET'

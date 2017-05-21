@@ -15,7 +15,6 @@
 #  password_salt :string(255)
 #  posts_count   :integer          default(0)
 #  password_hash :string(255)
-#  active        :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base
@@ -34,8 +33,11 @@ class User < ActiveRecord::Base
   validates :password, confirmation: true
   validates :email, presence: true
 
-  has_many :images, as: :share_image
+  # has_many :images, as: :share_image
   has_many :posts, dependent: :destroy
+  has_one :picture, as: :imageable
+
+  accepts_nested_attributes_for :picture
 
   scope :old, -> { where('birthday <= ?', 18.years.ago) }
   scope :active, -> { where(active: true) }

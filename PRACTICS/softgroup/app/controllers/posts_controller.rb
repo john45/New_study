@@ -21,6 +21,7 @@ class PostsController < ApplicationController
   def update
     @post.update_attributes params[:post]
     respond_to do |format|
+      format.html { redirect_to feeds_path }
       format.js
     end
   end

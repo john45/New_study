@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="image">
-    <%= image_tag post.picture.url(:medium) %>
+    <%= image_tag post.picture.picture.url(:medium) if post.picture %>
   </div>
 
   <div class="title_post">

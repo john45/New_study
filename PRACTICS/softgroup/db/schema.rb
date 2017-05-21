@@ -11,26 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170514201534) do
-
-  create_table "books", :force => true do |t|
-    t.string   "author"
-    t.string   "title"
-    t.integer  "page_counter"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.date     "year"
-    t.text     "body"
-  end
-
-  add_index "books", ["title"], :name => "index_books_on_title"
+ActiveRecord::Schema.define(:version => 20170521131917) do
 
   create_table "pictures", :force => true do |t|
     t.string   "title"
     t.integer  "imageable_id"
     t.string   "imageable_type"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   add_index "pictures", ["imageable_id", "imageable_type"], :name => "index_pictures_on_imageable_id_and_imageable_type"
@@ -40,12 +32,8 @@ ActiveRecord::Schema.define(:version => 20170514201534) do
     t.text     "body"
     t.datetime "published_at"
     t.integer  "user_id"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
-    t.string   "picture_file_name"
-    t.string   "picture_content_type"
-    t.integer  "picture_file_size"
-    t.datetime "picture_updated_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -55,12 +43,11 @@ ActiveRecord::Schema.define(:version => 20170514201534) do
     t.string   "password"
     t.string   "email"
     t.datetime "birthday"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
     t.string   "password_salt"
     t.integer  "posts_count",   :default => 0
     t.string   "password_hash"
-    t.boolean  "active",        :default => false
   end
 
 end

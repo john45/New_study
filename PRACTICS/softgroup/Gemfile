@@ -26,6 +26,7 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'faraday'
   gem 'faker'
   gem "factory_girl_rails", "~> 4.0"
   gem 'rspec-rails'
